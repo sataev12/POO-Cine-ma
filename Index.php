@@ -17,8 +17,10 @@ $realisation = new Realisateur("George", "Lucas", "Masculin", "14-05-1944");
 $acteurFilm = new Acteur("Harrison", "Ford", "Masculin", "13-07-1942");
 $starWars = new Film("Star Wars Episode 4", "1977", "121", "synopsis");
 
-$starWarsCasting = new Casting($acteurFilm, $roleFilm, $starWars);
+$starWarsCasting = new Casting($acteurFilm, $roleFilm, $starWars, $realisation);
 
 echo $acteurFilm->afficherFillmActeur();
+echo $realisation->afficherFillmRealisateur();
+echo $roleFilm->afficherRoleActeur();
 
 

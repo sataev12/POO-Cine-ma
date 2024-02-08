@@ -81,4 +81,7 @@ class Film {
     public function ajoutCasting(Casting $casting){
         $this->castings[] = $casting;
     }
+
+
+    
 }

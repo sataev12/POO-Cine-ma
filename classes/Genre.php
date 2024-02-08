@@ -2,12 +2,18 @@
 
 class Genre {
     private string $genre;
+    
 
     public function __construct(string $genre)
     {
         $this->genre = $genre;
+        
     }
 
+    public function __toString()
+    {
+        return $this->genre;
+    }
     
     public function getGenre()
     {
@@ -19,4 +25,8 @@ class Genre {
 
         return $this;
     }
+
+    
+
+
 }

@@ -4,24 +4,26 @@ class Film {
     private string $titre;
     private DateTime $dateSortie;
     private int $duree;
-    private Realisateur $realisateur;
-    private Genre $genre;
-    private Acteur $acteur;
-    private string $resume;
+    private string $resumee;
+    private array $castings;
+    
+    
     
 
-    public function __construct(string $titre, string $dateSortie, int $duree, Realisateur $realisateur, 
-    Genre $genre, Acteur $acteur, string $resume)
+    public function __construct(string $titre, string $dateSortie, int $duree, 
+    string $resumee)
     {
         $this->titre = $titre;
         $this->dateSortie = new DateTime($dateSortie);
         $this->duree = $duree;
-        $this->realisateur = $realisateur;
-        $this->genre = $genre;
-        $this->acteur = $acteur;
-        $this->resume = $resume;
+        $this->resumee = $resumee;
+        $this->castings = [];
     }
     
+    public function __toString()
+    {
+        return $this->titre;
+    }
 
 
     
@@ -45,16 +47,6 @@ class Film {
 
         return $this;
     }
-    public function getResume()
-    {
-        return $this->resume;
-    }
-    public function setResume($resume)
-    {
-        $this->resume = $resume;
-
-        return $this;
-    }
     public function getDuree()
     {
         return $this->duree;
@@ -65,34 +57,28 @@ class Film {
 
         return $this;
     }
-    public function getRealisateur()
+    public function getResumee()
     {
-        return $this->realisateur;
+        return $this->resumee;
     }
-    public function setRealisateur($realisateur)
+    public function setResumee($resumee)
     {
-        $this->realisateur = $realisateur;
+        $this->resumee = $resumee;
 
         return $this;
     }
-    public function getGenre()
+    public function getCastings()
     {
-        return $this->genre;
+        return $this->castings;
     }
-    public function setGenre($genre)
+    public function setCastings($castings)
     {
-        $this->genre = $genre;
+        $this->castings = $castings;
 
         return $this;
     }
-    public function getActeur()
-    {
-        return $this->acteur;
-    }
-    public function setActeur($acteur)
-    {
-        $this->acteur = $acteur;
 
-        return $this;
+    public function ajoutCasting(Casting $casting){
+        $this->castings[] = $casting;
     }
 }

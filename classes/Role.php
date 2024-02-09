@@ -3,17 +3,30 @@
 class Role {
     private string $nomPersonnage;
     private array $castings;
+    private array $acteursJoueRolePrecis;
 
     public function __construct(string $nomPersonnage)
     {
         $this->nomPersonnage = $nomPersonnage;
         $this->castings = [];
+        $this->acteursJoueRolePrecis = [];
     }
-
 
     public function __toString()
     {
         return $this->nomPersonnage;
+    }
+
+    public function ajoutActeurJoueRolePrecis(Acteur $acteurJoueRolePrecis){
+        $this->acteursJoueRolePrecis[] = $acteurJoueRolePrecis;
+    }
+
+    public function afficherActeursJoueRolePrecis(){
+        echo "Le role ".$this." a été joué par:<br>";
+        
+        foreach ($this->acteursJoueRolePrecis as $acteurJoueRolePrecis) {
+            echo $acteurJoueRolePrecis."<br>";
+        }
     }
 
     
@@ -53,4 +66,16 @@ class Role {
     }
 
 
+
+    
+    public function getActeursJoueRolePrecis()
+    {
+        return $this->acteursJoueRolePrecis;
+    }
+    public function setActeursJoueRolePrecis($acteursJoueRolePrecis)
+    {
+        $this->acteursJoueRolePrecis = $acteursJoueRolePrecis;
+
+        return $this;
+    }
 }

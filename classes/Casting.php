@@ -5,18 +5,17 @@ class Casting {
     private Acteur $acteur;
     private Role $role;
     private Film $film;
-    private Realisateur $realisateur;
+    
 
-    public function __construct(Acteur $acteur, Role $role, Film $film, Realisateur $realisateur)
+    public function __construct(Acteur $acteur, Role $role, Film $film, )
     {
         $this->acteur = $acteur;
         $this->role = $role;
         $this->film = $film;
-        $this->realisateur = $realisateur;
+        
 
         $this->acteur->ajoutCasting($this);
         $this->film->ajoutCasting($this);
-        $this->realisateur->ajoutCasting($this);
         $this->role->ajoutCasting($this);
     }
 
@@ -53,14 +52,5 @@ class Casting {
 
         return $this;
     }
-    public function getRealisateur()
-    {
-            return $this->realisateur;
-    }
-    public function setRealisateur($realisateur)
-    {
-            $this->realisateur = $realisateur;
-
-            return $this;
-    }
+    
 }

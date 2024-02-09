@@ -1,12 +1,12 @@
 <?php
 
 class Realisateur extends Personne {
-    private array $castings;
+    private array $listeFilms;
 
     public function __construct(string $nom, string $prenom, string $sexe, string $dateNaissance)
     {
         parent::__construct($nom, $prenom, $sexe, $dateNaissance);
-        $this->castings = [];
+        $this->listeFilms = [];
     }
 
     public function __toString()
@@ -14,30 +14,27 @@ class Realisateur extends Personne {
         return $this->nom." ".$this->prenom;
     }
 
-    
-    public function getCastings()
-    {
-        return $this->castings;
+    public function ajoutFilm(Film $film){
+        $this->listeFilms[] = $film;
     }
-    public function setCastings($castings)
+
+    public function filmographieRealisateur(){
+        echo "<br>". "Realisateur $this a realisé les films suivants:"."<br>";
+
+        foreach ($this->listeFilms as $film) {
+            echo $film."<br>";
+        }
+    }
+    
+    
+    public function getListeFilms()
     {
-        $this->castings = $castings;
+        return $this->listeFilms;
+    }
+    public function setListeFilms($listeFilms)
+    {
+        $this->listeFilms = $listeFilms;
 
         return $this;
     }
-
-    public function ajoutCasting(Casting $casting){
-        $this->castings[] = $casting;
-    }
-
-    public function afficherFillmRealisateur(){
-        $result = "<h4> $this est un realisateur des film suivants:</h4>";
-        foreach ($this->castings as $casting) {
-            $result .= $casting->getFilm()."<br>";
-        }
-
-
-        return $result;
-    }
-
 }

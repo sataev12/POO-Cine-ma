@@ -2,11 +2,15 @@
 
 class Acteur extends Personne {
     private array $castings;
+    private Role $rolePrecis;
 
-    public function __construct(string $nom, string $prenom, string $sexe, string $dateNaissance)
+    public function __construct(string $nom, string $prenom, string $sexe, string $dateNaissance, Role $rolePrecis)
     {
         parent::__construct($nom, $prenom, $sexe, $dateNaissance);
         $this->castings = [];
+        $this->rolePrecis = $rolePrecis;
+
+        $this->rolePrecis->ajoutActeurJoueRolePrecis($this);
     }
 
     
@@ -22,6 +26,16 @@ class Acteur extends Personne {
     public function setCastings($castings)
     {
         $this->castings = $castings;
+
+        return $this;
+    }
+    public function getRolePrecis()
+    {
+        return $this->rolePrecis;
+    }
+    public function setRolePrecis($rolePrecis)
+    {
+        $this->rolePrecis = $rolePrecis;
 
         return $this;
     }
@@ -41,4 +55,6 @@ class Acteur extends Personne {
     }
 
 
+
+    
 }

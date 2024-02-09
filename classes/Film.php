@@ -31,7 +31,6 @@ class Film {
         return $this->titre;
     }
 
-
     
     public function getTitre()
     {
@@ -97,6 +96,19 @@ class Film {
 
     public function ajoutCasting(Casting $casting){
         $this->castings[] = $casting;
+    }
+
+
+    public function infoFilm(){
+        echo "Film ".$this->titre." est sortie en année ".$this->dateSortie->format('Y')." et dure ".$this->duree." minutes.<br>";
+        echo "Le réalisateur du film est ".$this->realisateur->getPrenom()." ".$this->realisateur->getNom().", de sexe ".$this->realisateur->getSexe().", née le ".$this->realisateur->getDateNaissance()->format('d/m/Y')."<br>";
+        echo "Résumé du film : <br>".$this->resumee."<br>";
+        echo "Genre de film : $this->genre"."<br>";
+        echo "les acteur du film: <br>";
+            foreach ($this->castings as $casting) {
+                $acteur = $casting->getActeur(); // Récupérer l'objet Acteur à partir de l'objet Casting
+                echo $acteur->getNom()." ".$acteur->getPrenom().", de sexe ".$acteur->getSexe().", né le ".$acteur->getDateNaissance()->format('d/m/Y')."<br>"; 
+            }
     }
 
 
